@@ -1,0 +1,3 @@
+SQLAlchemy~=1.4.37
+aiogram~=2.20
+python-dotenv~=0.20.0
