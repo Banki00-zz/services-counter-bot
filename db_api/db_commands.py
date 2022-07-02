@@ -2,7 +2,7 @@ from sqlalchemy import extract, func
 from sqlalchemy.exc import IntegrityError
 from datetime import date, timedelta
 
-from db_api.db import session
+from db_api.db_connect import session
 from services import RawService, AddService
 
 

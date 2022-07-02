@@ -2,7 +2,11 @@ from datetime import date
 
 from sqlalchemy import Column, Integer, String, ForeignKey, Date
 
-from db_api.db import Base
+from db_api.db_connect import Base, create
+
+
+def create_database():
+    create()
 
 
 class RawService(Base):
