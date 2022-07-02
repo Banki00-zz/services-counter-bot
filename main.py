@@ -72,7 +72,7 @@ async def get_money_month(message: types.Message):
     )
     a = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
          'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
-    await message.answer(f'З/П за {a[(int(message.text) % 12)-1]}: {res}р.')
+    await message.answer(f'З/П за {a[(int(message.text) % 12) - 1]}: {res}р.')
 
 
 async def services_list_start(message: types.Message):
@@ -171,16 +171,15 @@ async def add_raw_service_start(message: types.Message):
 
 
 async def add_raw_service_info(message: types.Message, state: FSMContext):
-    if isinstance(message.text, str):
-        print(message.text.split(' '))
-        async with state.proxy() as data:
-            data['service_name'] = message.text.split(' ')[0]
-            data['fix_percent'] = message.text.split(' ')[1]
-            data['id_employee'] = message.from_user.id
-        user_data = await state.get_data()
-        add_raw_service(user_data)
-        await message.reply('Добавлено')
-        await state.finish()
+    async with state.proxy() as data:
+        data['service_name'] = message.text.rsplit(' ', 1)[0]  # Принимает название из любого кол-ва строк
+        data['fix_percent'] = message.text.split(' ')[-1]
+        data['id_employee'] = message.from_user.id
+    print(f"name = {data['service_name']}\npercent = {data['fix_percent']}")
+    user_data = await state.get_data()
+    add_raw_service(user_data)
+    await message.reply('Добавлено')
+    await state.finish()
 
 
 async def cmd_cancel(message: types.Message, state: FSMContext):
