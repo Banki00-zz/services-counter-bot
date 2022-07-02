@@ -39,9 +39,18 @@ async def set_commands(bot: Bot):
         types.BotCommand(command='/add', description='Добавить услугу'),
         types.BotCommand(command='/services_list', description='Список услуг'),
         types.BotCommand(command='/money_counter', description='Вывести ЗП'),
+        types.BotCommand(command='/other_commands', description='Доп. меню'),
         types.BotCommand(command='/cancel', description='Отменить действие'),
     ]
     await bot.set_my_commands(commands)
+
+
+# async def set_add_commands(bot: Bot):
+#     commands = [
+#         types.BotCommand(command="/all_services", description="Все виды услуг"),
+#         types.BotCommand(command="/something", description="Что-то еще"),
+#     ]
+#     await bot.set_my_commands(commands)
 
 
 async def money_counter_start(message: types.Message):
@@ -196,6 +205,13 @@ def register_handlers_common(dp: Dispatcher):
     dp.register_message_handler(cmd_cancel, Text(equals="Отмена", ignore_case=True), state="*")
 
 
+def register_services_list(dp: Dispatcher):
+    dp.register_message_handler(services_list_start, commands='services_list', state='*')
+    dp.register_message_handler(get_var_list, state=ServicesList.get_var)
+    dp.register_message_handler(day_list, state=ServicesList.day_list)
+    dp.register_message_handler(month_list, state=ServicesList.month_list)
+
+
 def register_handlers_services(dp: Dispatcher):
     dp.register_message_handler(add_raw_service_start, commands='raw_service', state="*")
     dp.register_message_handler(add_raw_service_info, state=AddRawService.waiting_raw_service_info)
@@ -204,11 +220,15 @@ def register_handlers_services(dp: Dispatcher):
     dp.register_message_handler(add_service_other, state=AddService.waiting_add_service_prise_discount)
 
 
-def register_services_list(dp: Dispatcher):
-    dp.register_message_handler(services_list_start, commands='services_list', state='*')
-    dp.register_message_handler(get_var_list, state=ServicesList.get_var)
-    dp.register_message_handler(day_list, state=ServicesList.day_list)
-    dp.register_message_handler(month_list, state=ServicesList.month_list)
+# def register_commands(dp: Dispatcher):
+#     print('register start')
+#     dp.register_message_handler(other_commands, commands='other_commands', state='*')
+
+
+# async def other_commands(dp):
+#     print('async start')
+#     await bot.delete_my_commands()
+#     await set_add_commands(bot)
 
 
 def register_money_counter(dp: Dispatcher):
@@ -222,6 +242,7 @@ async def main(dp):
     register_handlers_services(dp)
     register_services_list(dp)
     register_money_counter(dp)
+    # register_commands(dp)
     await set_commands(bot)
 
 
