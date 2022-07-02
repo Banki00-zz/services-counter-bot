@@ -1,4 +1,3 @@
-import os.path
 from sqlalchemy_utils import database_exists
 
 import services as db_creator
