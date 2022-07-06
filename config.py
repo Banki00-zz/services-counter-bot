@@ -10,5 +10,5 @@ DB_PASSWORD = str(os.getenv("DB_PASSWORD"))
 DATABASE = str(os.getenv("DATABASE"))
 HOST = str(os.getenv("HOST"))
 admins_id = [
-    418946881,
+
 ]
