@@ -16,7 +16,7 @@ DATABASE = {
     'database': f'{DATABASE}'
 }
 
-url_engine = create_engine("postgresql://bktydisjihcptq:883d49998ea5baaaf53d54c484cfe343f7d28c09f0fc59e1ad1c408424069577@ec2-99-81-137-11.eu-west-1.compute.amazonaws.com:5432/dbr0nlg8cp8nbk")
+url_engine = create_engine("postgresql://pbxqwhyzhqfnbd:a6f8c96e415919d2b44cb8c67c5547710efabfb75bfa742226f695e46b4707b6@ec2-34-252-216-149.eu-west-1.compute.amazonaws.com:5432/d4fsoh9lmtgd1n")
 
 
 # def get_engine(dict:DATABASE):

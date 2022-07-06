@@ -27,11 +27,11 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="dbr0nlg8cp8nbk" uuid="f63dc3f2-f002-4a3e-86a8-42784568772e">
+    <data-source source="LOCAL" name="heroku DB" uuid="f63dc3f2-f002-4a3e-86a8-42784568772e">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://ec2-99-81-137-11.eu-west-1.compute.amazonaws.com:5432/dbr0nlg8cp8nbk</jdbc-url>
+      <jdbc-url>jdbc:postgresql://ec2-34-252-216-149.eu-west-1.compute.amazonaws.com:5432/d4fsoh9lmtgd1n</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
