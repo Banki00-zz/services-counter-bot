@@ -66,7 +66,8 @@ def get_services_for_day(day: str, id_employee: int):
             AddService.id,
             RawService.service_name,
             AddService.sum_for_employee,
-            AddService.discount
+            AddService.discount,
+            AddService.date_add
         ).filter(
             RawService.id == AddService.service,
             AddService.date_add == set_day,
@@ -77,8 +78,6 @@ def get_services_for_day(day: str, id_employee: int):
         return result(date.today())
     elif day == 'Вчера':
         return result(date.today() - timedelta(days=1))
-    elif day == 'Позавчера':
-        return result(date.today() - timedelta(days=2))
 
 
 def get_services_for_month(num_month: int, id_employee: int):
@@ -86,7 +85,8 @@ def get_services_for_month(num_month: int, id_employee: int):
         AddService.id,
         RawService.service_name,
         AddService.sum_for_employee,
-        AddService.discount
+        AddService.discount,
+        AddService.date_add
     ).filter(
         RawService.id == AddService.service,
         extract('month', AddService.date_add) == num_month,
@@ -100,7 +100,8 @@ def get_last_notes(id_employee: int):
         AddService.id,
         RawService.service_name,
         AddService.sum_for_employee,
-        AddService.discount
+        AddService.discount,
+        AddService.date_add
     ).filter(
         RawService.id == AddService.service,
         AddService.id_employee == id_employee

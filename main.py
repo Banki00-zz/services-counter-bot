@@ -110,7 +110,8 @@ async def get_var_list(message: types.Message):
                 f'Id: {row[0]}\n'
                 f'Услуга: {row[1]}\n'
                 f'Сумма на руки: {row[2]}\n'
-                f'Скидка: {row[3]}'
+                f'Скидка: {row[3]}\n'
+                f'Дата: {row[4].strftime("%d.%m.%Y")}'
             )
 
 
@@ -124,7 +125,8 @@ async def day_list(message: types.Message):
             f'Id: {row[0]}\n'
             f'Услуга: {row[1]}\n'
             f'Сумма на руки: {row[2]}\n'
-            f'Скидка: {row[3]}'
+            f'Скидка: {row[3]}\n'
+            f'Дата: {row[4].strftime("%d.%m.%Y")}'
         )
 
 
@@ -138,7 +140,8 @@ async def month_list(message: types.Message):
             f'Id: {row[0]}\n'
             f'Услуга: {row[1]}\n'
             f'Сумма на руки: {row[2]}\n'
-            f'Скидка: {row[3]}'
+            f'Скидка: {row[3]}\n'
+            f'Дата: {row[4].strftime("%d.%m.%Y")}'
         )
 
 
